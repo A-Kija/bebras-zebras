@@ -1,6 +1,6 @@
 <?php
 
-class Barsukas extends MiskoTevas
+class Barsukas extends MiskoTevas implements Miskas
 {
     public $kailis = 'juodas';
     private $akiuSkaicius = 2;
@@ -75,6 +75,13 @@ class Barsukas extends MiskoTevas
     public function getAkiuSkaicius()
     {
         return $this->akiuSkaicius;
+    }
+
+
+    public function grybai(int $skaicius) : array
+    {
+        echo 'Grybai';
+        return [];
     }
 
 

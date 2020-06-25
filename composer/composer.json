@@ -1,0 +1,14 @@
+{
+    "name": "puole/composer",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "App\\DB\\": "app"
+        }
+    },
+    "authors": [{
+        "name": "A-Kija",
+        "email": "42836152+A-Kija@users.noreply.github.com"
+    }],
+    "require": {}
+}
