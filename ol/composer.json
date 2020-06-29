@@ -1,0 +1,11 @@
+{
+    "name": "login/objektinis",
+    "description": "Ojektinio prisijungimo pavyzdys",
+    "autoload": {
+        "psr-4": {
+            "Main\\": "app",
+            "App\\DB\\": "app"
+        }
+    },
+    "require": {}
+}
