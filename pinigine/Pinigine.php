@@ -3,23 +3,25 @@
 class Pinigine
 {
     private 
-        $popieriniaiPinigai = 0,
-        $metaliniaiPinigai = 0;
+        $popieriniaiPinigai = [],
+        $metaliniaiPinigai = [];
 
 
     public function ideti($kiekis)
     {
         if ($kiekis <= 2) {
-            $this->metaliniaiPinigai = $this->metaliniaiPinigai + $kiekis;
+            $this->metaliniaiPinigai[] = $kiekis;
         }
         else {
-            $this->popieriniaiPinigai = $this->popieriniaiPinigai + $kiekis;
+            $this->popieriniaiPinigai[] = $kiekis;
         }
         return $this;
     }
 
     public function skaiciuoti()
     {
-        echo '<br>'. ($this->metaliniaiPinigai + $this->popieriniaiPinigai) . '<br>';
+        echo '<br>'. (array_sum($this->metaliniaiPinigai) + array_sum($this->popieriniaiPinigai)) . '<br>';
+        echo '<br>METALAS: '. count($this->metaliniaiPinigai);
+        echo '<br>POPIERIUS: '. count($this->popieriniaiPinigai);
     }
 }
