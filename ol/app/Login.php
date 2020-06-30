@@ -1,6 +1,8 @@
 <?php
 namespace Main;
 
+use App\DB\JsonDb;
+
 class Login
 {
     
@@ -13,6 +15,10 @@ class Login
             ['name' => 'Petras', 'pass' => md5('123')],
             ['name' => 'AloYzas', 'pass' => md5('123')],
         ];
+
+
+       
+
         
         if (!empty($_POST)) {
             foreach ($data as $user) {

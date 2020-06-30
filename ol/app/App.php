@@ -2,6 +2,8 @@
 namespace Main;
 
 use Main\Login;
+use Main\User;
+use App\DB\JsonDb as DB;
 
 class App
 {
@@ -18,28 +20,50 @@ class App
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
-        if (self::$params[0] == 'doLogin') {
+        if (count(self::$params) == 2) {
+            if (self::$params[0] == 'users') {
 
-            $login = new Login;
+                if (self::$params[1] == 'addUser') {
+                    $newUser = User::createNew();
+                    $db = new DB;
+                    $db->create($newUser);
+                }
 
-            if ($login->result()) {
-                self::redirect('slaptas-1');
+             
+
+
+
+                if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
+                    require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
+                }
             }
-            else {
-                self::redirect('login');
+        }
+        elseif (count(self::$params) == 1) {
+            if (self::$params[0] == 'doLogin') {
+
+                $login = new Login;
+    
+                if ($login->result()) {
+                    self::redirect('slaptas-1');
+                }
+                else {
+                    self::redirect('login');
+                }
+            }
+
+            if (in_array(self::$params[0], self::$guarded)) {
+                if (!Login::auth()){
+                    self::redirect('login');
+                }
+            }
+
+            if (file_exists(self::VIEW_DIR.self::$params[0].'.php')) {
+                require(self::VIEW_DIR.self::$params[0].'.php');
             }
         }
 
-        if (in_array(self::$params[0], self::$guarded)) {
-            if (!Login::auth()){
-                self::redirect('login');
-            }
-        }
 
 
-        if (file_exists(self::VIEW_DIR.self::$params[0].'.php')) {
-            require(self::VIEW_DIR.self::$params[0].'.php');
-        }
 
     }
 

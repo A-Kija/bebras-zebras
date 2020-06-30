@@ -11,7 +11,7 @@ App::start();
 
 
 
-var_dump(App::getUriParams());
+// var_dump(App::getUriParams());
 
 
 

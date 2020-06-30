@@ -4,8 +4,10 @@
     "autoload": {
         "psr-4": {
             "Main\\": "app",
-            "App\\DB\\": "app"
+            "App\\DB\\": "app/db"
         }
     },
-    "require": {}
+    "require": {
+        "ramsey/uuid": "^4.0"
+    }
 }
