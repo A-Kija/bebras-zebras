@@ -36,10 +36,27 @@ $sql = "CREATE TABLE IF NOT EXISTS MyGuests (
 }
 
 
-$sql = "INSERT INTO MyGuests (firstname, lastname, email)
-VALUES ('Jonas', 'Jonaitis', 'jonas@petraitis.com')";
+// $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+// VALUES ('Jonas', 'Jonaitis', 'jonas@petraitis.com')";
 
-$stmt = $pdo->query($sql);
+// $pdo->query($sql);
+
+// $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+// VALUES (?, ?, ?)";
+
+// $stmt = $pdo->prepare($sql);
+
+// $stmt->execute(['Petras', 'Kazenas', 'vvv@jjj.lo']);
+
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (:name, :surname, :email)";
+
+$stmt = $pdo->prepare($sql);
+
+$data = ['name' => 'Lape', 'surname' => 'snape', 'email' => 'lape@snape.com'];
+
+$stmt->execute($data);
+
 
 
 $sql = "SELECT * FROM MyGuests WHERE id > 7 AND id < 167";
