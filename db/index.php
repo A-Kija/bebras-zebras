@@ -64,10 +64,12 @@ $sql = "SELECT * FROM MyGuests WHERE id > 7 AND id < 167";
 $stmt = $pdo->query($sql);
 
 
-while ($row = $stmt->fetch())
-{
-    echo "<br>" . $row['id']. ' ' .$row['firstname']. ' ' .$row['lastname'] . "<br>";
-}
+// while ($row = $stmt->fetch())
+// {
+//     echo "<br>" . $row['id']. ' ' .$row['firstname']. ' ' .$row['lastname'] . "<br>";
+// }
+
+// _dc($stmt->fetchAll());
 
 $from = 'Jonaitis';
 
